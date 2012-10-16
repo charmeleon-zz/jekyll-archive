@@ -9,11 +9,11 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Jekyll Bootstrap
+title : Charmeleon's Blog
 tagline: Site Tagline
 author :
-  name : Name Lastname
-  email : blah@email.test
+  name : Erick Rivas
+  email : chemical dot rivas [at] gmail dot com
   github : username
   twitter : username
   feedburner : feedname
@@ -79,11 +79,11 @@ JB :
   # Set 'provider' to false to turn commenting off globally.
   #
   comments :
-    provider : disqus
+    provider : livefyre
     disqus :
       short_name : jekyllbootstrap
     livefyre :
-      site_id : 123
+      site_id : 314184
     intensedebate :
       account : 123abc
     facebook :
