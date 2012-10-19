@@ -1,10 +1,9 @@
 ---
 layout: post
 title: "Relative Imports in Python 3"
-tagline: "The romanticized version"
-description: "Pitfalls in the relative import functionality in Python 3"
+description: ""
 category: 
-tags: ["python 3","python 3 imports","python packages"]
+tags: []
 ---
 {% include JB/setup %}
 <p>I've noticed a good number of programmers who use python will structure their entire code into a single file, a practice that I'm not entirely too fond of. I like to structure my code into different packages. Python makes creating packages relatively painless - all you need is a __init__.py file in the folder where you wish to create a package.</p>
@@ -43,4 +42,4 @@ As you can see, "from . import filename" fails spectacularly -- oddly enough, '.
 
 Suffice it to say that if you use relative imports, your python scripts can have only a single entry point - whatever resides in the parent package directory [in the sample file structure given above, that point would be main.py]. Anything else will have you pulling your hair out (or hacking away at __init__.py, which I would not endorse).
 
-[I should like to thanks ballingt from hackerschool for getting this answer for me from #python-unregistered. I banged my head against my desk for a full day before he saved me.]
+(I should like to thanks ballingt from hackerschool for getting this answer for me from #python-unregistered. I banged my head against my desk for a full day before he saved me.)
