@@ -95,7 +95,7 @@ Very interesting. Note how the specification says that the high bit of the first
 {% highlight python %} pcs = bin(bitfield[0]) # pcs == '0b11111111'
 > pcs[2:]
 '11111111'{% endhighlight %}
-The last line is what should be interpreted as the bitfield. In our case, the first byte indicates that the per has the first eight pieces (pieces 0 through 7).
+The last line is what should be interpreted as the bitfield. In our case, the first byte indicates that the peer has the first eight pieces (pieces 0 through 7).
 
 My suggestion:
 
