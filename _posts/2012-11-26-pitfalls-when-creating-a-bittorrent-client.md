@@ -50,7 +50,7 @@ This issue was almost entirely my fault for not reading below this line in the s
 ### Block offset
 
 Incidentally, this is the issue that followed when I fixed the incorrect request size issue above. Taking a closer look at the specification:
->>  __request: \<len=0013\>\<id=6\>\<index\>\<begin\>\<length\>__
+>>  __request: <notextile><len=0013><id=6><index><begin><length></notextile>__
 >>
 >>The __request__ message is fixed length, and is used to request a block. The payload contains the following information:
 >>...
