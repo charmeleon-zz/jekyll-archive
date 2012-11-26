@@ -15,7 +15,7 @@ A GET request is part of HTTP, so your browser is able to parse whatever respons
 
 ### Using sockets for GET requests is \(most likely\) overkill
 
-BitClient currently only supports HTTP trackers, which according to the specification respond accordingly to well-documented GET requests. Initially I was connecting to these trackers using TCP sockets. I would then parse the response using regular expressions. Although it was a good exercise, it was likely a waste of my time -- I've seen GET requests plenty of times before, and I ultimately re-wrote the __tracker.py__ file in its entirety, scrapping its socket-focused approach and moved to using urllib instead. In retrospect, I got very little to show for the time that went into this. Even if you're using this project to learn about networking (which I was), there's enough interesting networking problems ahead to waste time on this.
+BitClient \(my implementation\) currently only supports HTTP trackers, which according to the specification respond accordingly to well-documented GET requests. Initially I was connecting to these trackers using TCP sockets. I would then parse the response using regular expressions. Although it was a good exercise, it was likely a waste of my time -- I've seen GET requests plenty of times before, and I ultimately re-wrote the __tracker.py__ file in its entirety, scrapping its socket-focused approach and moved to using urllib instead. In retrospect, I got very little to show for the time that went into this. Even if you're using this project to learn about networking (which I was), there's enough interesting networking problems ahead to waste time on this.
 
 ### TypeError: 'str' does not support the buffer interface
 
