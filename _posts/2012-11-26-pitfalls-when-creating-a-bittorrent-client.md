@@ -7,9 +7,7 @@ tags: [bittorrent, python, encoding, networking, tcp sockets]
 ---
 {% include JB/setup %}
 
-## Pitfalls when creating a BitTorrent client
-
-For a little background, I started out at Hacker School by learning Python, using [Learn Python the Hard Way](http://learnpythonthehardway.org/book/) and [Dive Into Python 3](http://getpython3.com/diveintopython3/), then solidifying this knowledge by writing a BitTorrent client according to [specification](http://www.bittorrent.org/beps/bep_0003.html). The result was [BitClient](https://github.com/charmeleon/BitClient), a lightweight client that uses no third-party libraries \(not even [Twisted](http://twistedmatrix.com/trac/)!\) to torrent files. It's sufficiently far along as to be fully functional \(although it lacks uploading functionality, for now\), and I would like to offer some insights on the difficulties that I faced when creating it, with the exception of architectural roadblocks since there's still plenty of room in BitClient for that. Some of the items below show my struggles with Python 3, others are about issues on how the specification communicates certain things.
+For a little background, I started out at Hacker School by learning Python, using [Learn Python the Hard Way](http://learnpythonthehardway.org/book/) and [Dive Into Python 3](http://getpython3.com/diveintopython3/), then moved on to write a BitTorrent client according to [specification](http://www.bittorrent.org/beps/bep_0003.html). The result was [BitClient](https://github.com/charmeleon/BitClient), a lightweight client that uses no third-party libraries \(not even [Twisted](http://twistedmatrix.com/trac/)!\) to torrent files. It's sufficiently far along as to be fully functional \(although it currently lacks uploading functionality\), and I would like to offer some insights on the difficulties that I faced when creating it, with the exception of architectural roadblocks since there's still plenty of room in BitClient for that. Some of the items below show my struggles with Python 3, others are about issues on how the specification communicates certain things.
 
 ### For HTTP trackers, test your GET requests on your browser
 
@@ -25,14 +23,14 @@ I stumbled on this error during an early attempt at sending my GET request throu
 
 ### TypeError: Unicode-objects must be encoded before hashing
 
-The sister error of the aforementioned 'buffer interface', this one is spit out by `hashlib.sha1("hash this")`. It can be easily resolved by the same method as above, though check out the following paragraph for a deeper insight. I only mention it because this message is _much_ more human-readable than the 'buffer interface' one.
+The sister error of the aforementioned 'buffer interface', this one is spit out by `hashlib.sha1("hash this")`. It can be easily resolved by the same method as above, though check out the following paragraph for a closer look. I only mention it because this message is _much_ more human-readable than the 'buffer interface' one.
 
 ### Creating info_hash
 
 The spec on TheoryOrg says this about the info hash:
 > __info\_hash:__ urlencoded 20-byte SHA1 hash of the _value_ of the _info_ key from the Metainfo file. Note that the _value_ will be a bencoded dictionary, given the definition of the info _key_ above. 
 
-I have strong issues with the wording here. Hashing with sha1 returns a sha1 object, and to get the hash string you can use one of two methods - `digest()` and `hexdigest()`. In Python2 both methods will return a bytes object, so you should be able to use "my_hash.hexdigest()[:20]" and think that it's right \(it's not\). I think a better phrasing for __info hash__ goes as follows \(bold emphasis on changes\):
+I have strong issues with the wording here. Hashing with sha1 returns a sha1 object, and to get the hash string you can use one of two methods - `digest()` and `hexdigest()`. In Python2 both methods will return a bytes object, so you should be able to use `my_hash.hexdigest()[:20]` and think that it's right \(it's not\). I think a better phrasing for __info hash__ goes as follows \(bold emphasis on changes\):
 
 > __info\_hash__: urlencoded 20-byte SHA1 hash __string, parsed as binary data,__ of the __bencoded _info_ key from the Metainfo file__.
 
@@ -41,18 +39,18 @@ I also had to battle with default encoding on this one. My bencoded strings are 
 
 ### Begin with simple torrents
 
-If this is your first time building something from spec and using a language you've never used before, it's best to use simple torrents. The nuances of the spec and the language will keep you sufficiently occupied for a while, and architecturing a large, already-scaled project from scratch is not in your best interest. [Tom's test.torrent](https://github.com/charmeleon/BitClient/blob/master/torrents/test.torrent) is posibly the best torrent file to begin with. _\(As an annecdote, I should put it out here that I started with a file for Fedora 14, which was apparently long outdated from the moment I picked it up. As a result, all trackers were out of date or returned no peers, and though I was on the right path I couldn't tell because I couldn't find anyone to connect to -- so beware of dead torrents\)._
+If this is your first time building something from spec and using a language you've never used before, it's best to use simple torrents. The nuances of the spec and the language will keep you sufficiently occupied for a while, and architecturing a large, already-scaled project from scratch is not in your best interest. [Tom's test.torrent](https://github.com/charmeleon/BitClient/blob/master/torrents/test.torrent) is posibly the best torrent file to begin with. _\(As an annecdote, I should put it out here that I started with a file for Fedora 14, which had long since disappeared from the moment I picked it up. As a result, trackers either were no longer online or returned no peers, and though I was on the right path I couldn't tell because I couldn't find anyone to connect to -- so beware of dead torrents\)._
 
 ### Incorrect request size
 
 This issue was almost entirely my fault for not reading below this line in the specification:
 >> __This section is under dispute! Please use the discussion page to resolve this!__
-\(In my defense, I'm of the opinion that a mandatory portion of the official specification shouldn't be listed in a section under dispute, nor hidden amongst a wall of text\). As a bonus, using an incorrect request size results in peers merely dropping you -- there's no clear indication of where you went wrong. I only realized this was an issue after following my requests on [wireshark](http://www.wireshark.org/) and noticed every peer dropping me after my request was sent. For now, I've hard-coded my request size to 2^14 \(2**14 in Python\).
+\(In my defense, I'm of the opinion that a mandatory portion of the official specification shouldn't be listed in a section under dispute, nor hidden amongst a wall of text\). As a bonus, using an incorrect request size results in peers merely dropping you -- there's no clear indication of where you went wrong. I only realized this was an issue after following my requests on [wireshark](http://www.wireshark.org/) and noticed every peer dropping me after my request was sent. For now, I've hard-coded my request size to 2^14 \(2\*\*14 in Python\).
 
 ### Block offset
 
 Incidentally, this is the issue that followed when I fixed the incorrect request size issue above. Taking a closer look at the specification:
->>  __request: <len=0013><id=6><index><begin><length>__
+>>  __request: \<len=0013\>\<id=6\>\<index\>\<begin\>\<length\>__
 >>
 >>The __request__ message is fixed length, and is used to request a block. The payload contains the following information:
 >>...

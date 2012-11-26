@@ -1,5 +1,0 @@
-filename = "kubuntu-12.04.1-alternate-i386.iso.torrent"
-binary_file = open(filename, mode="rb")
-binary_string = binary_file.read()
-#latin1, Windows-1252, ISO-8859-1
-unicode_string = binary_string.decode("latin1")
