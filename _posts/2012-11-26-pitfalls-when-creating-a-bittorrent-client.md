@@ -27,7 +27,7 @@ The sister error of the aforementioned 'buffer interface', this one is spit out 
 
 ### Creating info_hash
 
-The spec on TheoryOrg says this about the info hash:
+The spec on TheoryOrg says this about the info hash\:
 > __info\_hash:__ urlencoded 20-byte SHA1 hash of the _value_ of the _info_ key from the Metainfo file. Note that the _value_ will be a bencoded dictionary, given the definition of the info _key_ above. 
 
 I have strong issues with the wording here. Hashing with sha1 returns a sha1 object, and to get the hash string you can use one of two methods - `digest()` and `hexdigest()`. In Python2 both methods will return a bytes object, so you should be able to use `my_hash.hexdigest()[:20]` and think that it's right \(it's not\). I think a better phrasing for __info hash__ goes as follows \(bold emphasis on changes\):
@@ -51,21 +51,21 @@ _\(In my defense, I'm of the opinion that a mandatory portion of the official sp
 ### Block offset
 
 Incidentally, this is the issue that followed when I fixed the incorrect request size issue above. Taking a closer look at the specification\:
->>  __request\: <len=0013><id=6><index><begin><length>__  
->>The __request__ message is fixed length, and is used to request a block. The payload contains the following information:
->>...
->>    __begin:__ integer specifying the zero-based byte offset within the piece
->>...
+>  __request\: <len=0013><id=6><index><begin><length>__  
+>The __request__ message is fixed length, and is used to request a block. The payload contains the following information:
+>...
+>    __begin:__ integer specifying the zero-based byte offset within the piece
+>...
 
 I interpreted the "begin" line to mean that you enumerated the blocks. Therefore my requests came in looking like this \(severely truncated so that they fit this page\):
->> ³õ^[7¯\ Ú= \(offset: 0\)  
->> õ^[7¯\ Ú=Ñ \(offset: 1\)  
->> ^[7¯\ Ú=Ñ² \(offset: 2\)  
+> ³õ^[7¯\ Ú= \(offset: 0\)  
+> õ^[7¯\ Ú=Ñ \(offset: 1\)  
+> ^[7¯\ Ú=Ñ² \(offset: 2\)  
 
 But the right way to go about it is this: let's say that a piece is 16735 bytes and we are using 2^14-sized requests. Their offsets would be as follows:
->> Piece 1: offset 0
->> Piece 2: offset 16384
->> Piece 3: offset 32768
+> Piece 1: offset 0
+> Piece 2: offset 16384
+> Piece 3: offset 32768
 
 To clarify this section, I would suggest:
 >>    __begin:__ zero-based integer specifying the offset of the data within the piece
