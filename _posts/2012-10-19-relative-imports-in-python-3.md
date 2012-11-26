@@ -43,6 +43,6 @@ Traceback (most recent call last):
 SystemError: Parent module '' not loaded, cannot perform relative import{% endhighlight %}
 As you can see, `"from . import filename"` fails spectacularly -- oddly enough, '.' refers to the current directory. The error is deceivingly descriptive. My first instinct was to check sys.path for the existence of the current directory, and it was there. Before figuring how to get it to work, I received various ideas. One of them was to manually set the `PYTHONPATH`, but in my opinion that's the equivalent of burning the forest to scare a gnat. I was also told to just stick to absolute paths, which seems silly.
 
-Suffice it to say that if you use relative imports, your python scripts can have only a single entry point - whatever resides in the parent package directory `[`in the sample file structure given above, that point would be main.py`]`. Anything else will have you pulling your hair out or hacking away at `__init__.py`, which I would not endorse.
+Suffice it to say that if you use relative imports, your python scripts can have only a single entry point - whatever resides in the parent package directory \[in the sample file structure given above, that point would be main.py\]. Anything else will have you pulling your hair out or hacking away at `__init__.py`, which I would not endorse.
 
-`(`I should like to thanks ballingt from hackerschool for getting this answer for me from #python-unregistered. I banged my head against my desk for a full day before he saved`)`
+\(I should like to thanks ballingt from hackerschool for getting this answer for me from #python-unregistered. I banged my head against my desk for a full day before he saved\)
