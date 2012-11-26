@@ -44,23 +44,23 @@ If this is your first time building something from spec and using a language you
 ### Incorrect request size
 
 This issue was almost entirely my fault for not reading below this line in the specification\:
->> __This section is under dispute! Please use the discussion page to resolve this!__
+> __This section is under dispute! Please use the discussion page to resolve this!__
 
-_\(In my defense, I'm of the opinion that a mandatory portion of the official specification shouldn't be listed in a section under dispute, nor hidden amongst a wall of text\)._ As a bonus, using an incorrect request size results in peers merely dropping you -- there's no clear indication of where you went wrong. I only realized this was an issue after following my requests on [wireshark](http://www.wireshark.org/) and noticed every peer dropping me after my request was sent. For now, I've hard-coded my request size to 2^14 \(2\*\*14 in Python\).
+_\(In my defense, I'm of the opinion that a mandatory portion of the official specification shouldn't be listed in a section under dispute, nor obfuscated a wall of text\)._ As a bonus, using an incorrect request size results in peers merely dropping you -- there's no clear indication of where you went wrong. I only realized this was an issue after following my requests on [wireshark](http://www.wireshark.org/) and noticed every peer dropping me after my request was sent. For now, I've hard-coded my request size to 2^14 \(2\*\*14 in Python\).
 
 ### Block offset
 
 Incidentally, this is the issue that followed when I fixed the incorrect request size issue above. Taking a closer look at the specification\:
 >  __request\: <len=0013><id=6><index><begin><length>__  
->The __request__ message is fixed length, and is used to request a block. The payload contains the following information:
->...
+> The __request__ message is fixed length, and is used to request a block. The payload contains the following information\:
+> ...
 >    __begin:__ integer specifying the zero-based byte offset within the piece
->...
+> ...
 
 I interpreted the "begin" line to mean that you enumerated the blocks. Therefore my requests came in looking like this \(severely truncated so that they fit this page\):
-> ³õ^[7¯\ Ú= \(offset: 0\)  
-> õ^[7¯\ Ú=Ñ \(offset: 1\)  
-> ^[7¯\ Ú=Ñ² \(offset: 2\)  
+> ³õ^[7¯\ Ú= \(offset: 0\)
+> õ^[7¯\ Ú=Ñ \(offset: 1\)
+> ^[7¯\ Ú=Ñ² \(offset: 2\)
 
 But the right way to go about it is this: let's say that a piece is 16735 bytes and we are using 2^14-sized requests. Their offsets would be as follows:
 > Piece 1: offset 0
@@ -84,18 +84,18 @@ With the exception of invalid messages \(upon receipt of which I would strongly 
 According to TheoryOrg:
 > The bitfield message is variable length, where X is the length of the bitfield. The payload is a bitfield representing the pieces that have been successfully downloaded. The high bit in the first byte corresponds to piece index 0. Bits that are cleared indicated a missing piece, and set bits indicate a valid and available piece. Spare bits at the end are set to zero. 
 This description, in my opinion, doesn't do a bitfield justice. Let me represent a bitfield payload:
-    payload = b'\xff\xfe\x0f'
+{% highlight python %}payload = b'\xff\xfe\x0f'{% endhighlight %}
 If you check the length of the bytes above, python should tell you that it is 3. Thus, we have:
-    \xff \xfe \x0f
+{% highlight python %}\xff \xfe \x0f{% endhighlight %}
 However, if you access them individually either by index or in a `for` loop, Python will say:
-    * payload[0] == 255
-    * payload[1] == 254
-    * payload[2] == 15
+{% highlight python %}* payload[0] == 255
+* payload[1] == 254
+* payload[2] == 15{% endhighlight %}
 Very interesting. Note how the specification says that the high bit of the first byte corresponds to piece index 0. In the example above, I had taken this to mean that the bitfield consisted of 3 pieces, and that we only had piece 0 _since it is the only one that is truly high_. That bit of rationalizing kept me uneasy for a while until I started running into trouble -- longer torrents would not complete because my bitfield was parsed incorrectly. So here's what it means. Let's try, in Python:
-    \> pcs = bin(bitfield[0])
+{% highlight python %}    \> pcs = bin(bitfield[0])
     # pcs == '0b11111111'
     \> pcs[2:]
-    '11111111'
+    '11111111'{% endhighlight %}
 The last line is what should be interpreted as the bitfield. In our case, it indicates that the per has the first eight pieces (pieces 0 through 7).
 
 My suggestion:
@@ -105,7 +105,7 @@ My suggestion:
 ### Parsing tracker's response
 
 I was mystified by trackers' responses for almost a day. I was still getting the hang of wireshark - I could Follow a Stream, but I was always looking at the 'RAW' representation of the stream. An actual example:
-    d8:completei41e12:crypto_flags16:................10:incompletei3e8:intervali1800e5:peers96:...:.S.._...2..0..[.Z...P......9z.0.M2.w..O.....D.Z...U.x..0.Ba...E....ZX.@M.0U...X......d.@r...e
+> d8:completei41e12:crypto_flags16:................10:incompletei3e8:intervali1800e5:peers96:...:.S.._...2..0..[.Z...P......9z.0.M2.w..O.....D.Z...U.x..0.Ba...E....ZX.@M.0U...X......d.@r...e
 
 It took me a while to realize that the dots were most likely characters that didn't have an ASCII representation, and wireshark was defaulting to a dot as its "I don't know what this is" flag. For half a day I was convinced that my trackers' responses were garbage. In this case, try looking at \(and properly following\) the conversation under "Hex Dump". At other times, "C Arrays" parsing was useful, especially once you work out its labeling system for peers/messages.
 
