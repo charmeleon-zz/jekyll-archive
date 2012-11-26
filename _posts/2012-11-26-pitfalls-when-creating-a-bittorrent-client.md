@@ -43,14 +43,14 @@ If this is your first time building something from spec and using a language you
 
 ### Incorrect request size
 
-This issue was almost entirely my fault for not reading below this line in the specification:
+This issue was almost entirely my fault for not reading below this line in the specification\:
 >> __This section is under dispute! Please use the discussion page to resolve this!__
 
-\(In my defense, I'm of the opinion that a mandatory portion of the official specification shouldn't be listed in a section under dispute, nor hidden amongst a wall of text\). As a bonus, using an incorrect request size results in peers merely dropping you -- there's no clear indication of where you went wrong. I only realized this was an issue after following my requests on [wireshark](http://www.wireshark.org/) and noticed every peer dropping me after my request was sent. For now, I've hard-coded my request size to 2^14 \(2\*\*14 in Python\).
+_\(In my defense, I'm of the opinion that a mandatory portion of the official specification shouldn't be listed in a section under dispute, nor hidden amongst a wall of text\)._ As a bonus, using an incorrect request size results in peers merely dropping you -- there's no clear indication of where you went wrong. I only realized this was an issue after following my requests on [wireshark](http://www.wireshark.org/) and noticed every peer dropping me after my request was sent. For now, I've hard-coded my request size to 2^14 \(2\*\*14 in Python\).
 
 ### Block offset
 
-Incidentally, this is the issue that followed when I fixed the incorrect request size issue above. Taking a closer look at the specification:
+Incidentally, this is the issue that followed when I fixed the incorrect request size issue above. Taking a closer look at the specification\:
 >>  __request\: <len=0013><id=6><index><begin><length>__  
 >>The __request__ message is fixed length, and is used to request a block. The payload contains the following information:
 >>...
