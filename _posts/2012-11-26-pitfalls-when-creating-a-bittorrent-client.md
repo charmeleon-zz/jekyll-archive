@@ -32,14 +32,14 @@ The spec on TheoryOrg says this about the info hash\:
 
 I have strong issues with the wording here. Hashing with sha1 returns a sha1 object, and to get the hash string you can use one of two methods - `digest()` and `hexdigest()`. In Python2 both methods will return a bytes object, so you should be able to use `my_hash.hexdigest()[:20]` and think that it's right \(it's not\). I think a better phrasing for __info hash__ goes as follows \(bold emphasis on changes\):
 
-> __info\_hash__: urlencoded 20-byte SHA1 hash, __parsed as a binary string__, of the __bencoded _info_ key from the Metainfo file__.
+> __info\_hash__: urlencoded 20-byte SHA1 hash, __parsed as a binary string__, of the _value_ of the _info_ key from the Metainfo file. Note that the _value will be a bencoded dictionary, given the definition of the info _key_ above.
 
 I also had to battle with default encoding on this one. My bencoded strings are 'str' objects, and to hash it I need to convert to 'bytes'. Initially, I used `bytes(info_key, "UTF-8")`, but sometimes Python3 would raise a UnicodeDecodeError. This makes sense if you realize that info_key wasn't originally written to file as UTF-8, and Python was re-parsing it in such a way that it picked up unintended characters that didn't map to anything. I had to encode my bencoded string using latin-1. The line that creates my info_hash \(sans the urlencoding\), thus looks like this:
 {% highlight python %}return sha(bencoder.encode(info_key).encode("latin-1")).digest(){% endhighlight %}
 
 ### Begin with simple torrents
 
-If this is your first time building something from spec and using a language you've never used before, it's best to use simple torrents. The nuances of the spec and the language will keep you sufficiently occupied for a while, and architecturing a large, already-scaled project from scratch is not in your best interest. [Tom's test.torrent](https://github.com/charmeleon/BitClient/blob/master/torrents/test.torrent) is posibly the best torrent file to begin with. _\(As an annecdote, I should put it out here that I started with a file for Fedora 14, which had long since disappeared from the moment I picked it up. As a result, trackers either were no longer online or returned no peers, and though I was on the right path I couldn't tell because I couldn't find anyone to connect to -- so beware of dead torrents\)._
+If this is your first time building something from spec and using a language you've never used before, it's best to use simple torrents. The nuances of the spec and the language will keep you sufficiently occupied for a while, and architecturing a large, already-scaled project from scratch is not in your best interest. [Tom's test.torrent](https://github.com/charmeleon/BitClient/blob/master/torrents/test.torrent) is possibly the best torrent file to begin with. _\(As an annecdote, I should put it out here that I started with a file for Fedora 14, which had long since disappeared from the moment I picked it up. As a result, trackers either were no longer online or returned no peers, and though I was on the right path I couldn't tell because I couldn't find anyone to connect to -- so beware of dead torrents\)._
 
 ### Incorrect request size
 
@@ -52,17 +52,17 @@ _\(In my defense, I'm of the opinion that a mandatory portion of the official sp
 
 Incidentally, this is the issue that followed when I fixed the incorrect request size issue above. Taking a closer look at the specification\:
 >  __request\: &#60;len=0013&#62;&#60;id=6&#62;&#60;index&#62;&#60;begin&#62;&#60;length&#62;__  
-> The __request__ message is fixed length, and is used to request a block. The payload contains the following information\:
-> ...
->    __begin:__ integer specifying the zero-based byte offset within the piece
-> ...
+> The __request__ message is fixed length, and is used to request a block. The payload contains the following information\:  
+> ...  
+>    __begin:__ integer specifying the zero-based byte offset within the piece  
+> ...  
 
 I interpreted the "begin" line to mean that you enumerated the blocks. Therefore my requests came in looking like this \(severely truncated so that they fit this page\)\:
 > ³õ^\[7¯\ Ú= \(offset: 0\)  
 > õ^\[7¯\ Ú=Ñ \(offset: 1\)  
 > ^\[7¯\ Ú=Ñ² \(offset: 2\)  
 
-But the right way to go about it is this: let's say that a piece is 16735 bytes and we are using 2^14-sized requests. Their offsets would be as follows:
+But the right way to go about it is this: let's say that a piece is 33119 bytes and we are using 2^14-sized requests. Their offsets would be as follows:
 > Block 1: offset 0  
 > Block 2: offset 16384  
 > Block 3: offset 32768  
@@ -72,7 +72,7 @@ To clarify this section, I would suggest\:
 
 ### Incomplete/Chained/Invalid messages
 
-So the filesharing portion of a BitTorrent client is accomplished by communicating length-prefixed messages. The more interesting issues that arise out of this occurs when you read from a socket and you receive:
+So the filesharing portion of a BitTorrent client is accomplished by communicating length-prefixed messages. The more interesting issues that arise out of this occur when you read from a socket and you receive:
 * An incomplete message
 * Multiple messages as a single string
 * An invalid message
@@ -116,4 +116,8 @@ If something is wrong, always look at wireshark. One of the issues with building
 ## Fin
 
 I hope you enjoyed the read!
+
+####Updated 2012-11-28
+
+  Updated with Kristen Widman's suggestions
 
