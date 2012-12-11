@@ -40,3 +40,7 @@ if block ran an average of __1.1226s__. Note that any sense of security
 we may have gained by previously using `===` is equally afforded by a
 `parseInt` function call. In short, if you are testing equality on integer
 values, please use `switch`!
+
+__EDIT:__ There's a decent post on the front page of Hacker News that expands
+a bit on JS conditionals:
+[Find it here](http://rmurphey.com/blog/2012/12/10/js-conditionals/)
