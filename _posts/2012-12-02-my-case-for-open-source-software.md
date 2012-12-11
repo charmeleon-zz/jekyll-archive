@@ -22,55 +22,48 @@ Ruby. As I write this, my operating system is Fedora 17 \(i686\) -- though I
 also have Ubuntu and Windows 7 installed. My editor of choice is currently vim.
 Today I spent about two hours fine-tuning Calibre, then proceeded to make a
 backup of my Kindle. My browser of choice is currently Firefox \(although I wish
-you could run Private and regular instances concurrently\). The last time I
-needed to work on a spreadsheet, I did so using LibreOffice Calc, which handled
-most of what I needed well enough, except Pivot Tables, and though I had minor
-issues with the formatting it's minor enough that I feel it wouldn't be correct
-to gripe about it. With the exception of Windows 7 and the Kindle, everything is
-free open source software.
+you could run Private and regular instances concurrently\). The list of software
+goes on, exceedingly so. With the exception of Windows 7 and the Kindle,
+everything is free open source software.
 
-It's such an open secret that the revelation astounds no one. But I dare think
-on it for a second and be amazed. I discovered Calibre when I started booting
-Ubuntu consistently, and after the pleasant experience today, I can't believe
-Amazon doesn't at least promote it. I have the Kindle 2, with physical keyboard
-and e-ink display. With it, I created Collections in order to keep track of the
-books I've already read. Frankly, it's a painful process, and when my previous
-Kindle's screen went wonky I was mortified that I lost out on all the quotes
-that I had saved. Calibre is the ideal e-book manager. It's extension agnostic
-\(.mobi, .epub, .pdf it handles it all!\), it converts between filetypes, and it
+I first discovered Calibre when I started booting Ubuntu consistently, and after
+the pleasant experience today, I can't believe Amazon doesn't at least promote
+it. I have the Kindle 2, with physical keyboard and e-ink display. With it, I
+created Collections in order to keep track of the books I've already read.
+Frankly, it's a painful process, and when my previous Kindle's screen went awry
+I was mortified that I lost out on all the quotes that I had saved. Calibre is
+the ideal e-book manager. It's extension agnostic \(.mobi, .epub, .pdf it
+handles them all _very_ well\), it converts between filetypes, and it
 supports some advanced features even if the majority of what you need is
 already built in \(I created an additional column for my books called "Read".
-I could have set it to pre-defined text such as Yes/No, Read/Reading/Untouched,
-free-text, or a range of other choices. I decided that a yyyy MM dd date was
-what I wanted\). The UI is crisp, and minimalistic.
+I could set the column to pre-defined text such as Yes/No,
+Read/Reading/Untouched, free-text, or a range of other choices. I decided that
+a yyyy MM dd date was what I wanted\). The UI is crisp, and minimalistic.
 
 I've "broken" my GNU/Linux installs on two separate occasions, and both times 
-everything needed to fix them was freely pre-installed \(even if I didn't know
+everything needed to fix them was already installed \(even if I didn't know
 how to properly use it yet\). If I need software for a particular task, most 
-likely a version of it is freely available on the repositories. But my biggest
+likely a version of it is freely available on the repositories, and I don't
+need to go out and fish out dependencies for libraries. But my biggest
 pleasure has been the ability to multi-boot and retain my files. I'm out to try
 a good number of GNU/Linux distros, but losing files kept me from committing
 to another change. I mentioned this in passing to my go-to Linux expert, and he
-explained how I could move my /home directory into its own partition, which 
+explained how I could move my `/home` directory into its own partition, which 
 could then be mounted on boot and any and all files then become available 
 across _operating systems_. It was such a mind blowing thing that I had issues
-coming to terms with not knowing that it was possible. I couldn't be happier
-when I did it successfully and opened Firefox, and Firefox offered to open my
-previously open tabs.
+coming to terms with it. I couldn't be happier when I first did it successfully
+and opened Firefox, and Firefox offered to open my previously open tabs, which
+were from my previous boot on the other operating system!
 
-So far, most of that is the usability aspect, which is great and all, but isn't
-always the best and isn't the end-all be-all of operating systems. So I'd like
-to comment on the editor, vim. Some months ago I programmed a web site on PHP,
-and not knowing a lick of PHP I appreciated Netbeans, particularly when my
-codebase got in the range of a few hundred files. What I didn't realize was
-that I had to look up functions on the documentation _every_ time, which isn't
-a bad thing until it is. For example, if I had continued my ignorant ways, one
-day I would be found without an internet connection available and unable to
-carry on because of an inability, or perhaps unwillingness, to commit trifling
-functions to memory because they're only a mouse-click away. While IDEs are
-nice, the barebones approach in __vim__ greatly aids my memorization \(though
-I do not have auto-complete and end up having to memorize the entire file
-structure, folders and all, of the project at hand, which is not as nice\).
+So far, most of that is the usability aspect, which is great, but isn't always
+so and isn't the final word of operating systems. So I'd like to comment on the
+editor, vim. Some months ago I worked on a web site on PHP, and not knowing a
+lick of PHP I appreciated Netbeans, particularly when my codebase got in the
+range of a few hundred files. While IDEs are nice, the barebones approach in
+__vim__ greatly aids my memorization \(though I do not have search auto-complete
+and end up having to memorize the entire file structure, folders and all, of the
+project at hand, which is not as nice. I concede that attempting to complete the
+aforementioned web site with this setback would have been insane\).
 
 That's nice and all, but I still haven't gotten to my favorite parts of my
 switch. When I boot into Windows, my machine is constantly using over 1GB of
@@ -87,3 +80,6 @@ personal favorite, Workspaces. How I ever lived without them is a mystery.
 When I go back to Windows I'm instantly annoyed that I can't open a program
 on a separate visual screen while my browser starts from cold, and sometimes
 immediately jump right back.
+
+So if you're on the edge about taking the GNU/Linux plunge, I can assure you, 
+you won't be sorry.
