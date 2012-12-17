@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Charmeleon's blog home page!
-tagline: Supporting tagline
+title: Home page
+tagline: Digital monsters
 ---
 {% include JB/setup %}
 ## Recent Posts
 
-The most recent posts.
+Charmeleon's most recent posts
 
 <ul class="posts">
   {% for post in site.posts %}
