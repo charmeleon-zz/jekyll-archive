@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "What I Wish I'd Known About the Terminal"
+title: "What I wish I'd known about the terminal"
 tagline: From Day One
 description: ""
 category: 
@@ -10,17 +10,15 @@ tags: [bash, terminal, linux]
 ## Overview
 
 The Linux terminal gives you a lot of power over your operating system, but most
-beginner tutorials are of the type "type _x_ into the terminal and _y_ shall
+beginner tutorials are of the type "type __x__ into the terminal and __y__ shall
 happen," which I've often found to be insufficient.
 
 ## Background
 
-To be fair, I wasn't entirely a beginner in command-line interfaces \(CLIs\). I
-had previously used MS-DOS before the Windows 95 GUI interface, so I was
-familiar with creating/copying/deleting/changing files and directories \(at
-least the basics\), so suffice to say that I'm not scared of accidentally
-running `rm -rf /`, the StackOverflow joke used to trick newbies into deleting
-everything.
+I used MS-DOS before the Windows 95 GUI interface, so I was familiar with
+creating/copying/deleting/changing files and directories \(at least the basics\)
+. Suffice to say that I'm not scared of accidentally running `rm -rf /`, the
+StackOverflow joke used to trick newbies into wiping their hard drive.
 
 For the few times when I've done something along the same vein I've
 so far been able to recover, but there are slightly more advanced \(maybe
@@ -40,7 +38,7 @@ scripting language than "the magic box that runs Linux."
 I've slowly started discovering that the terminal is much more flexible than
 I suspect. Take the `touch` command, which is used to update access and
 modification timestamps of a file, but will create the file if the supplied
-name doesn't exist. When I needed three files, I would chain the commands
+name doesn't exist. When I needed three files, I would run three commands
 {% highlight bash %}user@host:~$ touch file1
 user@host:~$ touch file2
 user@host:~$ touch file3{% endhighlight %}
@@ -64,12 +62,11 @@ for more complex patterns.
 
 #### 4. Piping and other redirection
 
-Piping is another functionality popular enough to be its own verb. Piping is a
-form of redirection, and its purpose is to send the output of one process as the
-input of another. As an example, we could use `printenv | grep HOME`. The
-vertical bar is called the pipe. In this example, `printenv` would normally
-print text to the terminal, but instead we redirect that text so that we can
-search for the keyword HOME.
+Piping is a form of redirection, and its purpose is to send the output of one
+process as the input of another. As an example, we could use `printenv | grep
+HOME`. The vertical bar is called the pipe. In this example, `printenv` would
+normally print text to the terminal, but instead we redirect that text so that
+we can search for the keyword HOME.
 
 There are other redirection keys, which are covered more or less thoroughly
 [on this page](http://www.ee.surrey.ac.uk/Teaching/Unix/unix3.html).
@@ -78,7 +75,7 @@ There are other redirection keys, which are covered more or less thoroughly
 
 This is probably well-known after a few sessions with the terminal, but the
 importance of this is that there is an easy way to see which variables are
-designed and what their values are. The command `printenv` will print the
+assigned and what their values are. The command `printenv` will print the
 environment variables as `KEY=value` pairs. But if you know the environment
 variable that you're after, simply typing `echo $KEY` in the terminal will
 give you the value if you've typed a valid key.
@@ -88,16 +85,16 @@ with grep: `printenv | grep KEY`
 
 #### 6. You can search man pages
 
-The `man` command, used to search the manual for any command accessible from
+The `man` command, used to search the manual for most commands accessible from
 the terminal, brings up a page that competes with Wikipedia for thoroughness.
 The interface, however, seems rigid and hard to navigate, and so I shied away
-from them until I found that you can search them.
+from man pages until I found that you can search them.
 
 Run the man command by using `man <command name>`. Then, press the forward
 slash key \(`/`\) and type the expression you'd like to search. This makes the
-process of searching for needles in a haystack much faster. A favorite use case
-of mine is when I've found a command on the web that uses multiple flags and
-I'd like to see what a particular flag does.
+man pages much less intimidating. A favorite use case of mine is when I've
+found a command on the web that uses multiple flags and I'd like to see what a
+particular flag does.
 
 #### 7. Check which binaries are run
 
