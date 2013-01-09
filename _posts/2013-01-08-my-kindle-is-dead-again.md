@@ -57,11 +57,14 @@ terminated the call.
 While I was on hold, I found that a loud minority of people have come across
 similar issues with their Kindle. The search term "kindle screen lines across"
 turns up 3.1m search results on Bing, and 2.7m on Google. I read somewhere that
-Amazon suggested the lifetime of a Kindle to be somewhere around 3 years. I didn't expect my Kindle
-to last forever, nor for Amazon to call it's expiration date on the dot. But a
-50% margin would be nice. Getting two consecutive items fail under very similar
-circumstances so far removed from their estimated failure date has me paranoid
-over whether or not this is a systematic failure. 
+Amazon suggested the lifetime of a Kindle to be somewhere around 3 years. I
+didn't expect my Kindle to last forever, nor for Amazon to call it's expiration
+date on the dot. But a 50% margin of error would be nice. Getting two
+consecutive items fail under very similar circumstances so far removed from
+their estimated failure date has me paranoid over whether or not this is a
+systematic failure. 
+   
+__EDIT: __ [Link to blog post with comments full of Kindle serial killers](http://cflove.org/2011/01/kindle-screen-broke-two-times-within-6-months.cfm)
 
 ### And I'm really unhappy
 A bigger issue, perhaps, is that this was by far the worst costumer service
@@ -93,3 +96,4 @@ theirs fail on the third week after the warranty has expired. It's still a nice
 device, I just don't feel like I can justify the expense for an item whose
 electronic life terminates far too early. Good thing I've backed up my quotes
 this time around.
+
