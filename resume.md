@@ -35,7 +35,8 @@ I've worked in all of these languages for varying periods of time.
 * Scripting: PHP5, Python, JavaScript, Bash
 * Markup: HTML, CSS, JSON, LaTeX, Markdown
 * Database: MS Access, MySQL
-* Frameworks: NodeJS, CakePHP
+* Data analysis: Mathematica
+* Frameworks: jQuery, NodeJS, CakePHP
 * Operating systems: GNU/Linux, Windows
 * IDEs: vim, emacs, Netbeans, MS Visual Studio
 
