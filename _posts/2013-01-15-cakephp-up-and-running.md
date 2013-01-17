@@ -11,13 +11,14 @@ tags: [cakephp, php, ubuntu, debian]
 After two hours of aimlessly stumbling with CakePHP I've managed the task of
 getting the framework up and running. Take that, 15 minute framework!
 
-
-I've previously written on the time that I broke my Ubuntu install, and I
-strongly suspect this was one of many causes for my headaches today. The other
-was that every tutorial I've come across references the file httpd.conf, while
-Debian uses a different approach to setting up a working Apache environment. So
-I'm  documenting what happened in hopes that if another soul manages the same
-screw up, this post should halve the time for figuring it out.
+I've written before about the time that I broke my Ubuntu install, and I
+attribute half of my headaches today on that fateful day \(but I could be wrong
+\). For the other half, I will say that every tutorial I've come across
+references the file httpd.conf, while Debian uses a different approach to
+setting up a working Apache environment. Since I'm not a Linux admin this took
+a while to figure out, so I'm  documenting what happened in hopes that if
+another soul manages the same screw up, this post should halve the time for
+figuring it out.
 
 Setting up CakePHP on a Debian build
 ====================================
@@ -33,9 +34,10 @@ I'm naming mine cakeblog:
 Now we want to let Apache know that we want to make this folder accessible
 from the browser. Almost every tutorial out there says to change your
 `httpd.conf` file, but Ubuntu __does not have an httpd.conf file__. Instead,
-we setup under /etc/apache2/sites-available/default. If you cannot find this
-file, make sure that apache2 is properly installed. Alternatively, use the
-command `locate sites-available` to find out the folder you need.
+we setup under /etc/apache2/sites-available/. If you cannot find this path, try
+the command `locate sites-available` which should point you in the right
+direction. If you still cannot find this path, make sure that apache2 is
+properly installed.
 
 From sites-available, let's take the default file and make a copy of it:
 > sudo cp /etc/apache2/sites-available/default /etc/apache2/sites-available/cakeblog
