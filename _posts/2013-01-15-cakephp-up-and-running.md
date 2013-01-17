@@ -64,7 +64,7 @@ which takes care of a few settings required by CakePHP. You're halfway there!
 
 Next, let's edit your hosts file \(command `sudo vim /etc/hosts`\), and
 redirect 127.0.0.1 to http://cakeblog via this line:
-> 127.0.0.1 cakeblog
+> `127.0.0.1 cakeblog`
 
 Then, again on the terminal, run this command to make a symlink to
  /etc/apache2/sites-enabled/:
