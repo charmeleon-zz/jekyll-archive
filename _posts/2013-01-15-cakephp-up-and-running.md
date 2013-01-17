@@ -76,6 +76,13 @@ snippet towards the end of the file \(but before the `Include` statements\):
 >   SetHandler application/x-httpd-php  
 > &lt;/FilesMatch&gt;
 
-Now we need to restart the apache server for the changes to take place.
+Now let's enable PDO for the php.ini files found under apache2 and for php5-cli
+> locate php5.ini
+> sudo vim /etc/php5/apache2/php.ini
+Look for the section `[Pdo]` and insert the following:
+> extension=pdo.so
+> extension=pdo_mysql.so
+
+Do likewise for /etc/php5/cli/php.ini. Now we need to restart the apache server for the changes to take place.
 > sudo service apache2 restart
 And that should be it. Congratulations! Your CakePHP install is up and running!
