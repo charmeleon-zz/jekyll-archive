@@ -44,8 +44,8 @@ From sites-available, let's take the default file and make a copy of it:
 
 Now let's edit the latter file with the appropriate settings.
 > sudo vim /etc/apache2/sites-available/cakeblog
-First, change the DocumentRoot to read
-> DocumentRoot /var/www/cakeblog/app/webroot
+First, change the DocumentRoot section to read
+> DocumentRoot /var/www/cakeblog/app/webroot  
 > ServerName cakeblog
 
 The first line sets the root directory for our CakePHP application. The second
