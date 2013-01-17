@@ -1,6 +1,7 @@
 ---
 layout: page
-title: "Erick J. Rivas"
+title: "Resume"
+tagline: "Erick J. Rivas"
 description: "Resume"
 ---
 {% include JB/setup %}
@@ -36,9 +37,10 @@ I've worked in all of these languages for varying periods of time.
 * Markup: HTML, CSS, JSON, LaTeX, Markdown
 * Database: MS Access, MySQL
 * Data analysis: Mathematica
-* Frameworks: jQuery, NodeJS, CakePHP
+* Frameworks: jQuery, NodeJS
 * Operating systems: GNU/Linux, Windows
 * IDEs: vim, emacs, Netbeans, MS Visual Studio
+* Currently: Using CakePHP
 
 ### Relevant Experience
 
