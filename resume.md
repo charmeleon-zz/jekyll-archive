@@ -21,10 +21,11 @@ pragmatic manner. I believe in finding the right tool for the right job.
 
 ##### Lab Assistant - June 2011 to October 2012
 
-* Built [online signup site](http://rake.mrl.ucsb.edu) from scratch,
-including the database. The site includes administrative functionality
-for user and instrument management
-* Added usage reporting utility to signup site using PHPExcel
+* Built [online signup](http://rake.mrl.ucsb.edu) project from the ground up.
+The site includes administrative functionality for user and instrument
+management
+* Added reporting utility to signup site using PHPExcel after I redesigned the
+database
 * Built Java image processing utility for TIFF images produced by X-ray
 diffractometer
 * Worked mathematical solution for binning of detector data and implemented
