@@ -15,29 +15,6 @@ I'm a self taught hacker, constantly interested in new design patterns
 and technologies. I strive to be a quick study and approach issues in a
 pragmatic manner. I believe in finding the right tool for the right job.
 
-### Education
-
-[Hacker School](https://www.hackerschool.com/)  
-Batch\[4\], Fall 2012  
-New York, NY  
-
-Physics, B.S.  
-Class of June 2012  
-University of California, Santa Barbara  
-
-### Skills
-
-I've worked in all of these languages for varying periods of time.
-* Compiled: C/C++, Java
-* Scripting: PHP5, Python, JavaScript, Bash
-* Markup: HTML, CSS, JSON, LaTeX, Markdown
-* Database: MS Access, MySQL
-* Data analysis: Mathematica
-* Frameworks: jQuery, NodeJS
-* Operating systems: GNU/Linux, Windows
-* IDEs: vim, emacs, Netbeans, MS Visual Studio
-* Currently: Using CakePHP
-
 ### Relevant Experience
 
 #### X-ray Diffraction Lab at UCSB, Santa Barbara, CA
@@ -60,3 +37,26 @@ solution in C
 * Built database-backed applications for internal use with MS Access databases
 using a combination of MS SQL and VBA
 * Four years of accounts receivable experience
+
+### Skills
+
+I've worked in all of these languages for varying periods of time.
+* Compiled: C/C++, Java
+* Scripting: PHP5, Python, JavaScript, Bash
+* Markup: HTML, XML, CSS, JSON, LaTeX, Markdown
+* Database: MS Access, MySQL
+* Data analysis: Mathematica
+* Frameworks: jQuery, NodeJS
+* Operating systems: GNU/Linux, Windows
+* IDEs: vim, emacs, Netbeans, MS Visual Studio
+* Currently: Hacking CakePHP
+
+### Education
+
+[Hacker School](https://www.hackerschool.com/)  
+Batch\[4\], Fall 2012  
+New York, NY  
+
+Physics, B.S.  
+Class of June 2012  
+University of California, Santa Barbara  
