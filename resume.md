@@ -1,8 +1,7 @@
 ---
 layout: page
-title: "Resume"
-tagline: "Erick J. Rivas"
-description: "Resume"
+title: Erick's Resume
+group: navigation
 ---
 {% include JB/setup %}
 
@@ -12,12 +11,9 @@ description: "Resume"
 
 ### Background
 
-I am a self taught hacker, constantly interested in new design patterns
-and technologies. I graduated from college with a Physics degree but fell in
-love with the immediacy of the impact that modern technology has in our world.
-
-I strive to be a quick study and approach issues in a pragmatic manner. I 
-believe in finding the right tool for the right job.
+I'm a self taught hacker, constantly interested in new design patterns
+and technologies. I strive to be a quick study and approach issues in a
+pragmatic manner. I believe in finding the right tool for the right job.
 
 ### Education
 
