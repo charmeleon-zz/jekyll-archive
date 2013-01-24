@@ -6,7 +6,7 @@ tagline: Digital monsters
 {% include JB/setup %}
 ## Recent Posts
 
-Charmeleon's most recent posts
+Erick's most recent posts
 
 <ul class="posts">
   {% for post in site.posts %}
