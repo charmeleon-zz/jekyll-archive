@@ -2,7 +2,7 @@
 layout: post
 title: "Pitfalls when creating a BitTorrent client"
 description: ""
-category: Advice
+category: advice
 tags: [bittorrent, python, encoding, networking, tcp sockets]
 ---
 {% include JB/setup %}

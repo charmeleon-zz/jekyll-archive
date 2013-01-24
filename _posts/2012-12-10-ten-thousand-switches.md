@@ -2,7 +2,7 @@
 layout: post
 title: "Ten thousand switches"
 description: ""
-category: Thoughts
+category: thoughts
 tags: ["javascript", "performance"]
 ---
 {% include JB/setup %}
