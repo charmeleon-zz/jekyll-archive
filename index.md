@@ -1,12 +1,9 @@
 ---
 layout: page
-title: Home page
-tagline: Digital monsters
+title: Recent content
+tagline:
 ---
 {% include JB/setup %}
-## Recent Posts
-
-Erick's most recent posts
 
 <ul class="posts">
   {% for post in site.posts %}
