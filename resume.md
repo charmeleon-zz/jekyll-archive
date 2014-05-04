@@ -11,25 +11,25 @@ group: navigation
 
 ### Background
 
-I'm a self taught hacker, constantly interested in new design patterns
-and technologies. I strive to be a quick study and approach issues in a
-pragmatic manner. I believe in finding the right tool for the right job.
+I'm a self taught hacker, constantly interested in new technologies. Currently working for Red Schoolhouse Software in Los Angeles, building software that helps educators align their curriculum with Common Core standards. Hacker School alumnus, Fall 2012, never graduate.
 
 ### Relevant Experience
 
-#### X-ray Diffraction Lab at UCSB, Santa Barbara, CA
+#### Red Schoolhouse Software, Los Angeles, CA
+##### Software Developer - February 2013 - Present
 
-##### Lab Assistant - June 2011 to October 2012
+* Back-end LAMP development with MVC principles and using Memcached as a persistence layer
+* Front-end AJAX-driven development using jQuery and JSON
 
-* Built [online signup](http://rake.mrl.ucsb.edu) project from the ground up.
-The site includes administrative functionality for user and instrument
-management
-* Added reporting utility to signup site using PHPExcel after I redesigned the
-database
+#### X-ray Diffraction Lab, Santa Barbara, CA
+
+##### Lab Assistant - June 2011 - October 2012
+
+* Built http://lab.mrl.ucsb.edu, a lab equipment signup  project
+* Added reporting utility to signup site using PHPExcel 
 * Built Java image processing utility for TIFF images produced by X-ray
 diffractometer
-* Worked mathematical solution for binning of detector data and implemented
-solution in C
+* Implemented solution for binning of detector data in C
 
 #### La Curacao, Los Angeles, CA
 
@@ -37,26 +37,28 @@ solution in C
 
 * Built database-backed applications for internal use with MS Access databases
 using a combination of MS SQL and VBA
-* Four years of accounts receivable experience
 
 ### Skills
 
 I've worked in all of these languages for varying periods of time.
-* Compiled: C/C++, Java
-* Scripting: PHP5, Python, JavaScript, Bash
+
 * Markup: HTML, XML, CSS, JSON, LaTeX, Markdown
+* Compiled: C/C++, Java
+* Scripting: PHP, Python, JavaScript, Bash
 * Database: MS Access, MySQL
 * Data analysis: Mathematica
 * Frameworks: jQuery, NodeJS
+* Version Control: git, svn
+* Issue tracking: redmine
 * Operating systems: GNU/Linux, Windows
-* IDEs: vim, emacs, Netbeans, MS Visual Studio
-* Currently: Hacking CakePHP
+* IDEs: vim, emacs, Netbeans, Eclipse, MS Visual Studio
+* Currently: Hacking Android/Java
 
 ### Education
 
 [Hacker School](https://www.hackerschool.com/)  
 Batch\[4\], Fall 2012  
-New York, NY  
+New York City, NY  
 
 Physics, B.S.  
 Class of June 2012  
